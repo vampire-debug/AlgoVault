@@ -1,0 +1,27 @@
+# Simple A* Search Program
+
+graph = {
+    'Arad': {'Sibiu': 140},
+    'Sibiu': {'Bucharest': 280},
+    'Bucharest': {}
+}
+
+# Heuristic values
+h = {
+    'Arad': 366,
+    'Sibiu': 253,
+    'Bucharest': 0
+}
+
+def a_star(start, goal):
+    cost = 0
+    city = start
+
+    while city != goal:
+        next_city = list(graph[city].keys())[0]
+        cost += graph[city][next_city]
+        city = next_city
+
+    return cost
+
+print("Shortest Distance:", a_star('Arad', 'Bucharest'), "km")
